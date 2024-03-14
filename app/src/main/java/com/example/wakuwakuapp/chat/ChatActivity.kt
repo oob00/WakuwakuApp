@@ -6,8 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wakuwakuapp.R
-import com.example.wakuwakuapp.retrofitApi.ApiClient
-import com.example.wakuwakuapp.retrofitApi.ApiInterface
+import com.example.wakuwakuapp.api.ApiService
+import com.example.wakuwakuapp.api.ApiClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,8 +27,8 @@ class ChatActivity: AppCompatActivity() {
         val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
 
-        val apiInterface: ApiInterface = ApiClient().client.create(ApiInterface::class.java)
-        val call: Call<List<Chatroom>> = apiInterface.getChatroomList()
+        val apiService: ApiService = ApiClient().client.create(ApiService::class.java)
+        val call: Call<List<Chatroom>> = apiService.getChatroomList()
 
         call.enqueue(object : Callback<List<Chatroom>> {
             override fun onResponse(call: Call<List<Chatroom>>, response: Response<List<Chatroom>>) {

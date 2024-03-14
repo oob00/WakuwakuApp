@@ -22,7 +22,6 @@
             android:layout_marginTop="37dp"
             android:layout_marginBottom="307dp"
             android:text="채팅방" tools:ignore="MissingConstraints">
-
     </Button>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

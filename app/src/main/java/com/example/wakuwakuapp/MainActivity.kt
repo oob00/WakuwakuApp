@@ -1,10 +1,11 @@
 package com.example.wakuwakuapp
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.example.wakuwakuapp.api.ApiClient
 import com.example.wakuwakuapp.api.ApiService
 import com.example.wakuwakuapp.dto.LoginRequest
 import com.example.wakuwakuapp.dto.LoginResponse
@@ -12,11 +13,6 @@ import com.example.wakuwakuapp.jwt.TokenManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import android.widget.Button
-import androidx.appcompat.app.AppCompatActivity
-import com.example.wakuwakuapp.chat.ChatActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var editTextId: EditText
@@ -28,12 +24,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_login)
 
         // Retrofit 초기화
-        val retrofit = Retrofit.Builder()
-            .baseUrl("http://10.0.2.2:8080/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        val apiService = retrofit.create(ApiService::class.java)
+        val apiService = ApiClient().client.create(ApiService::class.java)
 
         // 뷰 초기화
         editTextId = findViewById(R.id.editTextId)
@@ -66,12 +57,6 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this@MainActivity, "로그인 실패. 네트워크 오류입니다.", Toast.LENGTH_SHORT).show()
                 }
             })
-        }
-
-        val button: Button = findViewById(R.id.chatBtn)
-        button.setOnClickListener {
-            val intent = Intent(applicationContext, ChatActivity::class.java)
-            startActivity(intent)
         }
     }
 }
