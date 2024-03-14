@@ -1,6 +1,6 @@
 package com.example.wakuwakuapp
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -14,6 +14,9 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
+import com.example.wakuwakuapp.chat.ChatActivity
 
 class MainActivity : AppCompatActivity() {
     private lateinit var editTextId: EditText
@@ -63,6 +66,12 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this@MainActivity, "로그인 실패. 네트워크 오류입니다.", Toast.LENGTH_SHORT).show()
                 }
             })
+        }
+
+        val button: Button = findViewById(R.id.chatBtn)
+        button.setOnClickListener {
+            val intent = Intent(applicationContext, ChatActivity::class.java)
+            startActivity(intent)
         }
     }
 }
