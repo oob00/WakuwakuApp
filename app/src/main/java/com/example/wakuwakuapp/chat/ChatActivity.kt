@@ -1,13 +1,14 @@
 package com.example.wakuwakuapp.chat
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.wakuwakuapp.R
-import com.example.wakuwakuapp.api.ApiService
 import com.example.wakuwakuapp.api.ApiClient
+import com.example.wakuwakuapp.api.ApiService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -16,11 +17,11 @@ class ChatActivity: AppCompatActivity() {
     private var rooms: List<Chatroom>? = null
 
     lateinit var recyclerView: RecyclerView
-    lateinit var recyclerAdapter: ChatroomRecyclerAdapter
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.chatroom_list)
+        setContentView(R.layout.chat_chatroom_list)
 
         recyclerView = findViewById(R.id.recyclerView)
 

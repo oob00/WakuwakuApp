@@ -1,5 +1,6 @@
 package com.example.wakuwakuapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -7,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.wakuwakuapp.api.ApiClient
 import com.example.wakuwakuapp.api.ApiService
+import com.example.wakuwakuapp.chat.ChatActivity
 import com.example.wakuwakuapp.dto.LoginRequest
 import com.example.wakuwakuapp.dto.LoginResponse
 import com.example.wakuwakuapp.jwt.TokenManager
@@ -46,6 +48,9 @@ class MainActivity : AppCompatActivity() {
                         token?.let { TokenManager.saveToken(this@MainActivity, it) }
                         // 로그인 성공 메시지 표시 또는 다음 화면으로 이동
                         Toast.makeText(this@MainActivity, "로그인 성공!\ntoken: $token", Toast.LENGTH_SHORT).show()
+
+                        val intent = Intent(applicationContext, ChatActivity::class.java)
+                        startActivity(intent)
                     } else {
                         // 로그인 실패 메시지 표시
                         Toast.makeText(this@MainActivity, "로그인 실패. 올바른 이메일과 비밀번호를 입력하세요.", Toast.LENGTH_SHORT).show()

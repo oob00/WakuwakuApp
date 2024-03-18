@@ -14,6 +14,8 @@
             android:padding="5dp"
             android:layout_margin="10dp"
             android:textAlignment="center"
+            android:clickable="true"
+            android:focusable="true"
             android:text="방 이름"/>
 
     <TextView
@@ -25,5 +27,16 @@
             android:layout_margin="10dp"
             android:textAlignment="center"
             android:text="유저 수"/>
+
+    <Button
+            android:id="@+id/btn_enter_chatroom"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:layout_margin="10dp"
+            android:textAlignment="center"
+            android:text="입장"
+            tools:ignore="Suspicious0dp"/>
 
 </LinearLayout>
