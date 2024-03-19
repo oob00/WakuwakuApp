@@ -28,7 +28,7 @@ class ChatActivity: AppCompatActivity() {
         val layoutManager: RecyclerView.LayoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
 
-        val apiService: ApiService = ApiClient().client.create(ApiService::class.java)
+        val apiService: ApiService = ApiClient(applicationContext).client.create(ApiService::class.java)
         val call: Call<List<Chatroom>> = apiService.getChatroomList()
 
         call.enqueue(object : Callback<List<Chatroom>> {

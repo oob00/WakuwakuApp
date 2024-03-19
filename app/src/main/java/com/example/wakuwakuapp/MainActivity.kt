@@ -15,6 +15,7 @@ import com.example.wakuwakuapp.jwt.TokenManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.io.File
 
 class MainActivity : AppCompatActivity() {
     private lateinit var editTextId: EditText
@@ -25,8 +26,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        // dex file로 인한 SecurityExcepton 수정 코드
+        val dexOutputDir: File = codeCacheDir
+        dexOutputDir.setReadOnly()
+
         // Retrofit 초기화
-        val apiService = ApiClient().client.create(ApiService::class.java)
+        val apiService = ApiClient(applicationContext).client.create(ApiService::class.java)
 
         // 뷰 초기화
         editTextId = findViewById(R.id.editTextId)
